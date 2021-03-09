@@ -8,6 +8,9 @@
 <!-- Para isto funcionar, precisa baixar o JSTL e colocar o jar 
 dentro de WEB-INF/lib -->
 
+<c:url value="/deletaEmpresa" var="deletaEmpresaLink"/>
+<c:url value="/editarEmpresa" var="editaEmpresaLink"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +27,12 @@ dentro de WEB-INF/lib -->
 	<p>Lista de empresas:</p>
 	<ul>
 		<c:forEach items="${ empresas }" var="empresa">
-		<fmt:parseDate value="${ empresa.dataAbertura }" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>
-			<li>${ empresa.nome } - <fmt:formatDate value="${ parsedDate }" pattern="dd/MM/yyyy"/> </li>
+			<fmt:parseDate value="${ empresa.dataAbertura }" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>
+			<li>
+				${ empresa.nome } - <fmt:formatDate value="${ parsedDate }" pattern="dd/MM/yyyy"/> 
+				<a href="${ editaEmpresaLink }?id=${ empresa.id }">edita</a> 
+				<a href="${ deletaEmpresaLink }?id=${ empresa.id }" >remove</a> 
+			</li>
 		</c:forEach>
 	</ul>
 </body>
