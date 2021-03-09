@@ -1,21 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8" %>
-<%@ page import="java.util.List, br.com.alura.gerenciador.servlet.Empresa" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List,br.com.alura.gerenciador.entities.Empresa" %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Java Standard Taglib</title>
+	<meta charset="UTF-8">
+	<title>Java Standard</title>
 </head>
+
 <body>
-    Lista de empresas: <br />
+    <p>Lista de empresas:</p>
 
     <ul>
-        <c:forEach items="${empresas}" var="empresa">
-            <li>${empresa.nome}</li>
-        </c:forEach>
+		<% 	
+			List<Empresa> lista = (List<Empresa>) request.getAttribute("empresas"); 
+			for(Empresa empresa : lista) { 
+		%>
+        	<li><%= empresa.getNome() %></li>
+        <%	
+        	} 
+        %>
     </ul>
+    
 </body>
 </html>

@@ -1,9 +1,12 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Banco {
+import br.com.alura.gerenciador.entities.Empresa;
+
+public class BancoDeDados {
 
 	private static List<Empresa> lista = new ArrayList<>();
 	
@@ -13,11 +16,11 @@ public class Banco {
 	}
 	
 	public void adiciona(Empresa empresa) {
-		Banco.lista.add(empresa);
+		lista.add(empresa);
 	}
 	
 	public List<Empresa> getEmpresas() {
-		return Banco.lista;
+		return Collections.unmodifiableList(lista);
 	}
 
 }

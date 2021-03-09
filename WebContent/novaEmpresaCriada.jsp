@@ -5,8 +5,14 @@
 	<title>Insert title here</title>
 </head>
 <body>
-	
-	Empresa ${ empresa } cadastrada com sucesso!
+
+	<%
+		String nomeEmpresa = (String) request.getAttribute("empresa");
+		System.out.println(nomeEmpresa);
+	%>
+		
+	<p>Empresa <% out.println(nomeEmpresa); %> cadastrada com sucesso!</p> 
+	<p>Empresa <%= nomeEmpresa %> cadastrada com sucesso!</p> 
 		
 </body>
 </html>
