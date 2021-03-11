@@ -8,15 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 
-public class AlteraEmpresa {
-
-	private static final AlteraEmpresa instancia = new AlteraEmpresa();
-	private AlteraEmpresa() {}
-
-	public static AlteraEmpresa getInstance() {
-		return instancia;
-	}
-
+public class AlteraEmpresa implements Acao {
+	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

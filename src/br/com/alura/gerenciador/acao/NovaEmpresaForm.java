@@ -6,15 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class NovaEmpresaForm {
-
-	private static final NovaEmpresaForm instancia = new NovaEmpresaForm();
-	private NovaEmpresaForm() {}
+public class NovaEmpresaForm implements Acao {
 	
-	public static NovaEmpresaForm getInstance() {
-		return instancia;
-	}
-	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		

@@ -10,15 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class ListaEmpresas {
-
-	private static final ListaEmpresas instancia = new ListaEmpresas();
-	private ListaEmpresas() {}
+public class ListaEmpresas implements Acao {
 	
-	public static ListaEmpresas getInstance() {
-		return instancia;
-	}
-	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		System.out.println("listando empresas");

@@ -9,15 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class NovaEmpresa {
-
-	private static final NovaEmpresa instancia = new NovaEmpresa();
-	private NovaEmpresa() {}
+public class NovaEmpresa implements Acao {
 	
-	public static NovaEmpresa getInstance() {
-		return instancia;
-	}
-	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		

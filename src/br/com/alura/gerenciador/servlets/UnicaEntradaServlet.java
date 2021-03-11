@@ -9,12 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.acao.AlteraEmpresa;
-import br.com.alura.gerenciador.acao.DeletaEmpresa;
-import br.com.alura.gerenciador.acao.ListaEmpresas;
-import br.com.alura.gerenciador.acao.MostraEmpresa;
-import br.com.alura.gerenciador.acao.NovaEmpresa;
-import br.com.alura.gerenciador.acao.NovaEmpresaForm;
+import br.com.alura.gerenciador.acao.Acao;
 
 @WebServlet("/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
@@ -25,30 +20,16 @@ public class UnicaEntradaServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String paramAcao = request.getParameter("acao");
-
-		String nome = null;
-		if (paramAcao.equals("ListaEmpresas")) {
-			ListaEmpresas acao = ListaEmpresas.getInstance();
+		
+		String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
+		
+		String nome;
+		try {
+			Class<?> classe = Class.forName(nomeDaClasse); // carrega a classe com o nome da String
+			Acao acao = (Acao) classe.newInstance();
 			nome = acao.executa(request, response);
-
-		} else if (paramAcao.equals("DeletaEmpresa")) {
-			DeletaEmpresa acao = DeletaEmpresa.getInstance();
-			nome = acao.executa(request, response);
-
-		} else if (paramAcao.equals("MostraEmpresa")) {
-			MostraEmpresa acao = MostraEmpresa.getInstance();
-			nome = acao.executa(request, response);
-
-		} else if (paramAcao.equals("AlteraEmpresa")) {
-			AlteraEmpresa acao = AlteraEmpresa.getInstance();
-			nome = acao.executa(request, response);
-
-		} else if (paramAcao.equals("NovaEmpresa")) {
-			NovaEmpresa acao = NovaEmpresa.getInstance();
-			nome = acao.executa(request, response);
-		} else if (paramAcao.equals("NovaEmpresaForm")) {
-			NovaEmpresaForm acao = NovaEmpresaForm.getInstance();
-			nome = acao.executa(request, response);
+		} catch (Exception e) {
+			throw new ServletException(e);
 		}
 		
 		String[] tipoEEndereco = nome.split(":");

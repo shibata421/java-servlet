@@ -9,15 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class MostraEmpresa {
-
-	private static final MostraEmpresa instancia = new MostraEmpresa();
-	private MostraEmpresa() {}
+public class MostraEmpresa implements Acao {
 	
-	public static MostraEmpresa getInstance() {
-		return instancia;
-	}
-	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		

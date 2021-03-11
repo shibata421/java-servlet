@@ -8,15 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.modelo.BancoDeDados;
 
-public class DeletaEmpresa {
-
-	private static final DeletaEmpresa instancia = new DeletaEmpresa();
-	private DeletaEmpresa() {}
+public class DeletaEmpresa implements Acao {
 	
-	public static DeletaEmpresa getInstance() {
-		return instancia;
-	}
-	
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
