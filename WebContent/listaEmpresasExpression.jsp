@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page
-	import="java.util.List,br.com.alura.gerenciador.entities.Empresa"%>
+	import="java.util.List,br.com.alura.gerenciador.modelo.Empresa"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!-- Para isto funcionar, precisa baixar o JSTL e colocar o jar 
 dentro de WEB-INF/lib -->
 
-<c:url value="/deletaEmpresa" var="deletaEmpresaLink"/>
-<c:url value="/editarEmpresa" var="editaEmpresaLink"/>
+<c:url value="/entrada?acao=DeletaEmpresa" var="deletaEmpresaLink"/>
+<c:url value="/entrada?acao=MostraEmpresa" var="mostraEmpresaLink"/>
 
 <!DOCTYPE html>
 <html>
@@ -30,8 +30,8 @@ dentro de WEB-INF/lib -->
 			<fmt:parseDate value="${ empresa.dataAbertura }" type="date" pattern="yyyy-MM-dd" var="parsedDate"/>
 			<li>
 				${ empresa.nome } - <fmt:formatDate value="${ parsedDate }" pattern="dd/MM/yyyy"/> 
-				<a href="${ editaEmpresaLink }?id=${ empresa.id }">edita</a> 
-				<a href="${ deletaEmpresaLink }?id=${ empresa.id }" >remove</a> 
+				<a href="${ mostraEmpresaLink }&id=${ empresa.id }">edita</a> 
+				<a href="${ deletaEmpresaLink }&id=${ empresa.id }" >remove</a> 
 			</li>
 		</c:forEach>
 	</ul>

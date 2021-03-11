@@ -1,20 +1,25 @@
-package br.com.alura.gerenciador.model;
+package br.com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.alura.gerenciador.entities.Empresa;
-
 public class BancoDeDados {
 
 	private static List<Empresa> lista = new ArrayList<>();
 	private static Integer chaveSequencial = 1;
+	private static final BancoDeDados intancia = new BancoDeDados();
 	
 	static {
 		lista.add(new Empresa(chaveSequencial++, "Alura"));
 		lista.add(new Empresa(chaveSequencial++, "Caelum"));
+	}
+	
+	private BancoDeDados() {}
+
+	public static BancoDeDados getInstancia() {
+		return intancia;
 	}
 	
 	public void adiciona(Empresa empresa) {

@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.entities;
+package br.com.alura.gerenciador.modelo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

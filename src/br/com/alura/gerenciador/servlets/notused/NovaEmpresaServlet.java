@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlets;
+package br.com.alura.gerenciador.servlets.notused;
 
 import java.io.IOException;
 
@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.entities.Empresa;
-import br.com.alura.gerenciador.model.BancoDeDados;
+import br.com.alura.gerenciador.modelo.BancoDeDados;
+import br.com.alura.gerenciador.modelo.Empresa;
 
-@WebServlet("/novaEmpresa")
+//@WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -29,7 +29,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		empresa.setNome(nomeEmpresa);
 		empresa.setData(dataDeCriacao);
 		
-		BancoDeDados banco = new BancoDeDados();
+		BancoDeDados banco = BancoDeDados.getInstancia();
 		banco.adiciona(empresa);
 		
 		request.setAttribute("empresa", empresa.getNome());
