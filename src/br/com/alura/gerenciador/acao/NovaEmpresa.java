@@ -18,7 +18,7 @@ public class NovaEmpresa {
 		return instancia;
 	}
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) 
+	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		System.out.println("Nova Empresa sendo cadastrada");
@@ -35,7 +35,7 @@ public class NovaEmpresa {
 		
 		request.setAttribute("empresa", empresa.getNome());
 		request.setAttribute("data", empresa.getDataAbertura().toString());
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 //		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
 //		rd.forward(request, response);

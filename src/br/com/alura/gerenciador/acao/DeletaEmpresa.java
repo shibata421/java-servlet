@@ -17,7 +17,7 @@ public class DeletaEmpresa {
 		return instancia;
 	}
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) 
+	public String executa(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
 		System.out.println("deletando empresa");
@@ -28,6 +28,6 @@ public class DeletaEmpresa {
 		
 		System.out.println(String.format("empresa de id %s deletada", id));
 		
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }

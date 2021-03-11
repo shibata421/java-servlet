@@ -17,7 +17,7 @@ public class AlteraEmpresa {
 		return instancia;
 	}
 
-	public void executa(HttpServletRequest request, HttpServletResponse response)
+	public String executa(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		BancoDeDados banco = BancoDeDados.getInstancia();
@@ -29,6 +29,6 @@ public class AlteraEmpresa {
 		System.out.println("alterando empresa " + id);
 
 		banco.edita(id, nome, data);
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 }
