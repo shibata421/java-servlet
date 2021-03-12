@@ -7,13 +7,17 @@ import java.util.stream.Collectors;
 
 public class BancoDeDados {
 
-	private static List<Empresa> lista = new ArrayList<>();
+	private static List<Empresa> empresas = new ArrayList<>();
+	private static List<Usuario> usuarios = new ArrayList<>();
 	private static Integer chaveSequencial = 1;
 	private static final BancoDeDados intancia = new BancoDeDados();
 	
 	static {
-		lista.add(new Empresa(chaveSequencial++, "Alura"));
-		lista.add(new Empresa(chaveSequencial++, "Caelum"));
+		empresas.add(new Empresa(chaveSequencial++, "Alura"));
+		empresas.add(new Empresa(chaveSequencial++, "Caelum"));
+		
+		usuarios.add(new Usuario("nico", "12345"));
+		usuarios.add(new Usuario("ana", "12345"));
 	}
 	
 	private BancoDeDados() {}
@@ -24,11 +28,11 @@ public class BancoDeDados {
 	
 	public void adiciona(Empresa empresa) {
 		empresa.setId(chaveSequencial++);
-		lista.add(empresa);
+		empresas.add(empresa);
 	}
 	
 	public List<Empresa> getEmpresas() {
-		return Collections.unmodifiableList(lista);
+		return Collections.unmodifiableList(empresas);
 	}
 
 	public void deleta(String id) {
@@ -42,14 +46,14 @@ public class BancoDeDados {
 //			}
 //		}
 		
-		lista = lista.stream()
+		empresas = empresas.stream()
 				.filter(empresa -> empresa.getId() != empresaId)
 				.collect(Collectors.toList());
 		
 	}
 
 	public Empresa pega(String id) {
-		return lista.stream()
+		return empresas.stream()
 				.filter(empresa -> empresa.getId() == Integer.valueOf(id))
 				.findFirst()
 				.orElseThrow();
@@ -59,6 +63,13 @@ public class BancoDeDados {
 		Empresa empresa = pega(id);
 		empresa.setNome(nome);
 		empresa.setData(data);
+	}
+
+	public Usuario existeUsuario(String login, String senha) {
+		return usuarios.stream()
+			.filter(usuario -> usuario.ehIgual(login, senha))
+			.findFirst()
+			.orElse(null);
 	}
 
 }

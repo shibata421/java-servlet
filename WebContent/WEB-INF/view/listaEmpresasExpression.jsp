@@ -19,6 +19,8 @@ dentro de WEB-INF/lib -->
 </head>
 
 <body>
+	<c:import url="logout-parcial.jsp"/>
+	<p>Usuario Logado: ${ usuarioLogado.login }</p>
 	<c:if test="${ not empty empresa }">
 		<fmt:parseDate value="${ data }" pattern="yyyy-MM-dd" var="parsedDate"/>
 		<fmt:formatDate value="${ parsedDate }" pattern="dd/MM/yyyy" var="newDate"/>
